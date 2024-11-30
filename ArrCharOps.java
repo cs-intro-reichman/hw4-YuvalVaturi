@@ -23,7 +23,7 @@ public class ArrCharOps {
         System.out.println(subArray(arr2, 2, 9));
         System.out.println(compareTo("abcd", "abcd")); //0
         System.out.println(compareTo("abc", "abcd")); //-1
-        System.out.println(compareTo("abw", "abcd")); //-1
+        System.out.println(compareTo("abw", "abcd")); //1
         System.out.println(compareTo("Abcd", "a")); //1
         System.out.println(compareTo("apple", "banana"));//1
         System.out.println(compareTo("apple", "applepie"));//-1
@@ -165,7 +165,7 @@ public class ArrCharOps {
         // System.out.println(n);
 
         for (int i = 0; i <n; i++){
-            calc = (long) (arr[i] * Math.pow(7, n - 1));
+            calc = (long) (arr[i] * Math.pow(7.0, n - 1));
             hash = hash + calc;
             n--;
             // System.out.println("calc: "+calc);
@@ -202,25 +202,25 @@ public class ArrCharOps {
      */
     public static int compareTo(String str1, String str2) {
         str1 = str1.toLowerCase();
-        str2 = str1.toUpperCase();
+        str2 = str2.toLowerCase();
         if (str1.equals(str2)){
             return 0;
         }
         String shorter = (str1.length() < str2.length()) ? str1 : str2;
         String longer = (str1.length() > str2.length()) ? str1 : str2;
-        String win = longer;
+        String stronger = longer;
         
         for (int i=0; i<shorter.length(); i++){
             if (shorter.charAt(i) != longer.charAt(i)){
                if (shorter.charAt(i) > longer.charAt(i)){
-                win = shorter;
+                stronger = shorter;
                }
             }
         }
-        if (win == str1){
+        if (stronger == str1){
             return 1;
         }
-        else if (win == str2){
+        else if (stronger == str2){
             return -1;
         }
         else return -2;
