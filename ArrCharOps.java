@@ -21,16 +21,31 @@ public class ArrCharOps {
         System.out.println(lastIndexOf(arr1, 'l'));
         System.out.println(concat(arr1, arr2));
         System.out.println(subArray(arr2, 2, 9));
-        System.out.println(compareTo("abcd", "abcd"));
-        System.out.println(compareTo("abc", "abcd"));
-        System.out.println(compareTo("abw", "abcd"));
-        System.out.println(compareTo("Abcd", "a"));
-        System.out.println(compareTo("apple", "banana"));
-        System.out.println(compareTo("apple", "applepie"));
-        System.out.println(compareTo("Zoo", "zoo"));
+        System.out.println(compareTo("abcd", "abcd")); //0
+        System.out.println(compareTo("abc", "abcd")); //-1
+        System.out.println(compareTo("abw", "abcd")); //-1
+        System.out.println(compareTo("Abcd", "a")); //1
+        System.out.println(compareTo("apple", "banana"));//1
+        System.out.println(compareTo("apple", "applepie"));//-1
+        System.out.println(compareTo("Zoo", "zoo"));//0
+//-1 if str1 is lexicographically less than str2,
+     //zero if they are equal, and 1 if str1 is
+    //lexicographically greater than str2.
+     //return -2 if there is an error with the input.
+
+
         System.out.println(hashCode(arr1));
-        System.out.println(hashCode(arr2));
+        System.out.println(arr1.hashCode());
+
+
+        System.out.println("arr2:" + hashCode(arr2));
+        System.out.println(arr2.hashCode());
+
+
     }
+
+
+    
 
     /** Prints the given array of characters, and moves the cursor to the next line.
      */
@@ -105,10 +120,11 @@ public class ArrCharOps {
         char[] con = new char[arr1.length + arr2.length];
         int i = 0;
         for (; i<arr1.length; i++){
-            con[i] = arr1[1];
+            con[i] = arr1[i];
         }
-        for (; i<arr2.length; i++){
-            con[i] = arr2[1];
+        for (int j = 0; j<arr2.length; j++){
+            con[i] = arr2[j];
+            i++;
         }
         return con;
     }
@@ -120,8 +136,10 @@ public class ArrCharOps {
      */     
     public static char[] subArray(char[] arr, int beginIndex, int endIndex) {
         char[] sub = new char[endIndex-beginIndex];
-        for(int i = beginIndex; i < sub.length; i++){
-            sub[i] = arr[i];
+        int j = beginIndex;
+        for(int i = 0; i < sub.length; i++){
+            sub[i] = arr[j];
+            j++;
         }
         return sub;
     }
@@ -137,12 +155,17 @@ public class ArrCharOps {
         // if (arr.length == 0){
         //     return 0;
         // }
-        int hash = 0;
-        int calc = 0;
+        long hash = 0;
+        long calc = 0;
         int n = arr.length;
+        System.out.println("new");
+        System.out.println(n);
         for (int i = 0; i <arr.length; i++){
-            calc = (int) (arr[i] * Math.pow(7, n - 1));
+            calc = (arr[i] * Math.pow(7, n - 1));
             hash = hash + calc;
+            n--;
+            System.out.println("calc: "+calc);
+            System.out.println("hash: " + hash);
         }
         
         return hash;
@@ -174,23 +197,28 @@ public class ArrCharOps {
      *         return -2 if there is an error with the input.
      */
     public static int compareTo(String str1, String str2) {
+        str1 = str1.toLowerCase();
+        str2 = str1.toUpperCase();
         if (str1.equals(str2)){
             return 0;
         }
-        else if (str1.length() < str2.length()){
-            return -1;
+        String shorter = (str1.length() < str2.length()) ? str1 : str2;
+        String longer = (str1.length() > str2.length()) ? str1 : str2;
+        String win = longer;
+        
+        for (int i=0; i<shorter.length(); i++){
+            if (shorter.charAt(i) != longer.charAt(i)){
+               if (shorter.charAt(i) > longer.charAt(i)){
+                win = shorter;
+               }
+            }
         }
-        else if (str1.length() > str2.length()){
+        if (win == str1){
             return 1;
         }
-        else if (str1.length() == str2.length()){
-            for (int i=0; i<str1.length(); i++){
-                if (str1.charAt(i) > str2.charAt(i)){
-                    return 1;
-                }
-            }
+        else if (win == str2){
             return -1;
         }
-        return -2;
+        else return -2;
     }
 }
