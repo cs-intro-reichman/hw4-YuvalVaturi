@@ -152,16 +152,20 @@ public class ArrCharOps {
      *  The hash value of an empty array is zero.
      */
     public static long hashCode(char[] arr) {
-        // if (arr.length == 0){
-        //     return 0;
-        // }
+       
         long hash = 0;
         long calc = 0;
         int n = arr.length;
+        
+        if (n == 0) {
+            return hash;
+        }
+
         System.out.println("new");
         System.out.println(n);
-        for (int i = 0; i <arr.length; i++){
-            calc = (arr[i] * Math.pow(7, n - 1));
+
+        for (int i = 0; i <n; i++){
+            calc = (long) (arr[i] * Math.pow(7, n - 1));
             hash = hash + calc;
             n--;
             System.out.println("calc: "+calc);
