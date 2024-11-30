@@ -161,15 +161,15 @@ public class ArrCharOps {
             return hash;
         }
 
-        System.out.println("new");
-        System.out.println(n);
+        // System.out.println("new");
+        // System.out.println(n);
 
         for (int i = 0; i <n; i++){
             calc = (long) (arr[i] * Math.pow(7, n - 1));
             hash = hash + calc;
             n--;
-            System.out.println("calc: "+calc);
-            System.out.println("hash: " + hash);
+            // System.out.println("calc: "+calc);
+            // System.out.println("hash: " + hash);
         }
         
         return hash;
