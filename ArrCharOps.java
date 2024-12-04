@@ -34,12 +34,12 @@ public class ArrCharOps {
      //return -2 if there is an error with the input.
 
 
-        System.out.println(hashCode(arr1));
-        System.out.println(arr1.hashCode());
+        // System.out.println(hashCode(arr1));
+        // System.out.println(arr1.hashCode());
 
 
-        System.out.println("arr2:" + hashCode(arr2));
-        System.out.println(arr2.hashCode());
+        // System.out.println("arr2:" + hashCode(arr2));
+        // System.out.println(arr2.hashCode());
 
 
     }
@@ -154,7 +154,6 @@ public class ArrCharOps {
     public static long hashCode(char[] arr) {
        
         long hash = 0;
-        long calc = 0;
         int n = arr.length;
         
         if (n == 0) {
@@ -165,8 +164,7 @@ public class ArrCharOps {
         // System.out.println(n);
 
         for (int i = 0; i <n; i++){
-            calc = (long) (arr[i] * Math.pow(7.0, n - 1));
-            hash = hash + calc;
+            hash += arr[i] * (Math.pow(7, n - 1));
             n--;
             // System.out.println("calc: "+calc);
             // System.out.println("hash: " + hash);

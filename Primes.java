@@ -1,27 +1,28 @@
 public class Primes {
     public static void main(String[] args) {
         int n = Integer.parseInt(args[0]);
-        char[] nums = new char[n + 1];
+        boolean[] nums = new boolean[n + 1];
         int p = 2;
         int counter = (n - 1);
         System.out.println("Prime numbers up to " + n + ":");
-        for (int i = 0; i < nums.length; i++) {
-            if (i == 0 || i == 1) {
-                nums[i] = 'F';
-            } else
-                nums[i] = 'T';
+        
+        for (int i = 2; i < nums.length; i++) {
+                nums[i] = true;
         }
+
+
         while (p <= Math.sqrt(n)) {
             for (int i = 0; i < nums.length; i++) {
-                if (nums[i] == 'T' && i % p == 0 && i / p != 1) {
-                    nums[i] = 'F';
+                if (nums[i] == true && i % p == 0 && i / p != 1) {
+                    nums[i] = false;
                     counter--;
                 }
             }
             p++;
         }
+        
         for (int i = 0; i < nums.length; i++) {
-            if (nums[i] == 'T') {
+            if (nums[i] == true) {
                 System.out.println(i);
             }
         }
