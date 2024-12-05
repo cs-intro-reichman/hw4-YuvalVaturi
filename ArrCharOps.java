@@ -163,9 +163,11 @@ public class ArrCharOps {
         // System.out.println("new");
         // System.out.println(n);
 
-        for (int i = 0; i <n; i++){
+        for (int i = 0; i <arr.length; i++){
             hash += arr[i] * (Math.pow(7, n - 1 - i));
             n--;
+
+            
             // System.out.println("calc: "+calc);
             // System.out.println("hash: " + hash);
         }
@@ -199,31 +201,15 @@ public class ArrCharOps {
      *         return -2 if there is an error with the input.
      */
     public static int compareTo(String str1, String str2) {
-        if (str1 == null || str2 == null || str1.isEmpty() || str2.isEmpty()) {
-            return -2;
+        if (str1 == null || str2 == null || str1.isEmpty() || str2.isEmpty()) {return -2;}
+        int minLength = Math.min(str1.length(), str2.length());
+        for (int i = 0; i < minLength; i++)
+        {
+            if (str1.charAt(i) < str2.charAt(i)) {return -1;}
+            else if (str1.charAt(i) > str2.charAt(i)) {return 1;}
         }
-        str1 = str1.toLowerCase();
-        str2 = str2.toLowerCase();
-        if (str1.equals(str2)){
-            return 0;
-        }
-        String shorter = (str1.length() < str2.length()) ? str1 : str2;
-        String longer = (str1.length() > str2.length()) ? str1 : str2;
-        String stronger = longer;
-        
-        for (int i=0; i<shorter.length(); i++){
-            if (shorter.charAt(i) != longer.charAt(i)){
-               if (shorter.charAt(i) > longer.charAt(i)){
-                stronger = shorter;
-               }
-            }
-        }
-        if (stronger == str1){
-            return 1;
-        }
-        else if (stronger == str2){
-            return -1;
-        }
-        else return -2;
+        if (str1.length() > str2.length()) {return 1;}
+        if (str2.length() > str1.length()) {return -1;}
+        return 0;
     }
 }
