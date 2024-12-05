@@ -164,7 +164,7 @@ public class ArrCharOps {
         // System.out.println(n);
 
         for (int i = 0; i <n; i++){
-            hash += arr[i] * (Math.pow(7, n - 1));
+            hash += arr[i] * (Math.pow(7, n - 1 - i));
             n--;
             // System.out.println("calc: "+calc);
             // System.out.println("hash: " + hash);
@@ -199,6 +199,9 @@ public class ArrCharOps {
      *         return -2 if there is an error with the input.
      */
     public static int compareTo(String str1, String str2) {
+        if (str1 == null || str2 == null || str1.isEmpty() || str2.isEmpty()) {
+            return -2;
+        }
         str1 = str1.toLowerCase();
         str2 = str2.toLowerCase();
         if (str1.equals(str2)){
