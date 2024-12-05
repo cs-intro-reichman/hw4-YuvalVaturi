@@ -20,7 +20,7 @@ public class Primes {
             }
             p++;
         }
-        
+
         for (int i = 0; i < nums.length; i++) {
             if (nums[i] == true) {
                 System.out.println(i);
@@ -28,7 +28,7 @@ public class Primes {
         }
 
         System.out.println(
-                    "There are " + counter + " primes between 2 and " + n + "(" + (int) (((double) counter / (double) n)*100) + "% are primes)");
+                    "There are " + counter + " primes between 2 and " + n + " (" + (int) (((double) counter / (double) n)*100) + "% are primes)");
             
 
             // System.out.println("Prime numbers up to " + n + ":");
