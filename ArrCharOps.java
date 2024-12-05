@@ -165,7 +165,7 @@ public class ArrCharOps {
 
         for (int i = 0; i <arr.length; i++){
             hash += arr[i] * (Math.pow(7, n - 1 - i));
-            n--;
+            
 
             
             // System.out.println("calc: "+calc);
